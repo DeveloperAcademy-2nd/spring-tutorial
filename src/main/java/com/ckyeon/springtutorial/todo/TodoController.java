@@ -1,18 +1,23 @@
 package com.ckyeon.springtutorial.todo;
 
-import java.util.HashMap;
-import java.util.Map;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.ckyeon.springtutorial.todo.dto.CreateRequest;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class TodoController {
 
-  @GetMapping("/test")
-  public Map<String, String> test() {
-    System.out.println("API 테스트!!");
-    HashMap<String, String> map = new HashMap<>();
-    map.put("테스트!!", "테스트 성공!!");
-    return map;
+  private final TodoService todoService;
+
+  public TodoController(TodoService todoService) {
+    this.todoService = todoService;
+  }
+
+  @PostMapping("/todos")
+  public ResponseEntity<Void> create(@RequestBody CreateRequest dto) {
+    todoService.create(dto);
+    return ResponseEntity.ok(null);
   }
 }

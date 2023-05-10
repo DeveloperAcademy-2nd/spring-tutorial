@@ -17,4 +17,29 @@ public class Todo {
   private String body;
 
   private boolean done;
+
+  protected Todo() {
+  }
+
+  public Todo(String title, String body) {
+    this.title = title;
+    this.body = body;
+    this.done = false;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public String getBody() {
+    return body;
+  }
+
+  public boolean isDone() {
+    return done;
+  }
 }
