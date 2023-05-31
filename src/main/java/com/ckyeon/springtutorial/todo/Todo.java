@@ -27,6 +27,20 @@ public class Todo {
     this.done = false;
   }
 
+  public void update(String title, String body, Boolean done) {
+    if (title != null) {
+      this.title = title;
+    }
+
+    if (body != null) {
+      this.body = body;
+    }
+
+    if (done != null) {
+      this.done = done;
+    }
+  }
+
   public Long getId() {
     return id;
   }
